@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>BT tính điểm trung bình và tổng</title> 
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+    <h3>Điểm Toán: </h3>
+    <input type="number" ng-model="toan" id="toan">
+    <h3>Điểm Lý: </h3>
+    <input type="number" ng-model="ly" id="ly">
+    <h3>Điểm Hoá: </h3>
+    <input type="number" ng-model="hoa" id="hoa"><br><br>
+    <input type="button" value="Calculate" ng-click="Calc()">
+    <br>
+    <h3>Tổng điểm 3 môn toán, lý, hoá là: {{tong}}</h3>
+    <h3>Điểm trung bình là: {{dtb}}</h3>
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope){
+            $scope.toan = 0;
+            $scope.ly = 0;
+            $scope.hoa = 0;
+            $scope.tong = "";
+            $scope.dtb = "";
+            $scope.Calc = function (){
+                $scope.tong = $scope.toan + $scope.ly + $scope.hoa;
+                $scope.dtb = $scope.tong / 3;
+            }
+        });
+    </script>
+</body>
+</html>
